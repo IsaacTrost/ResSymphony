@@ -56,6 +56,14 @@ class NetworkFitter():
 
         return key
 
+    def init_steps_cmf(self, file, utils):
+        response = utils.createNewSimulation()
+        logger.debug(response)
+        key = json.loads(response)["key"]
+        response = utils.loadCircuit(key, file)
+        logger.debug(response)
+
+        return key
     def make_step(self,key,X,inputids,controlids,outputids,eq_time,utils):
 
         vinids=inputids+controlids
